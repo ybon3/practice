@@ -124,36 +124,41 @@ Eclipse 比較簡單、code 有變動會自動 reload，但前面設定步驟比
 Task Feedback
 ==============
 
-* [GwtSample] 當中每個檔案（`pom.xml` 除外）的意義、以及與其他檔案的關聯性。
+> [GwtSample] 當中每個檔案（`pom.xml` 除外）的意義、以及與其他檔案的關聯性。
 
-	- src\main\java\com\dtc\test\Test.gwt.xml
 
-		與 GWT 相關的 config file，`<module>` 的 `rename-to` 屬性與 GWT 的 `output` 路徑相對應。
+- src\main\java\com\dtc\test\Test.gwt.xml
 
-	- src\main\java\com\dtc\test\client\TestEP.java
-	
-		是一個 GWT Module，與 `test.gwt.xml` 中的 `entry-point` 對應，裡面包含頁面 layout 設定，以及 ui 元件的行為。
-		`start()` method 實作了非同步的 RPC，在 RPC 回應之前以 print log per second 的方式來表達程序還在等待。
+	與 GWT 相關的 config file，`<module>` 的 `rename-to` 屬性與 GWT 的 `output` 路徑相對應。
 
-	- src\main\java\com\dtc\test\client\RpcService.java
-	
-		遠端程序呼叫的 API，提供給 `TestEP.java` 遠端呼叫。
+- src\main\java\com\dtc\test\client\TestEP.java
+
+	是一個 GWT Module，與 `test.gwt.xml` 中的 `entry-point` 對應，裡面包含頁面 layout 設定，以及 ui 元件的行為。
+	`start()` method 實作了非同步的 RPC，在 RPC 回應之前以 print log per second 的方式來表達程序還在等待。
+
+- src\main\java\com\dtc\test\client\RpcService.java
+
+	遠端程序呼叫的 API，提供給 `TestEP.java` 遠端呼叫。
 
 - src\main\java\com\dtc\test\server\RpcServiceImpl.java
-實作 RpcService.java，實現 RPC 時的 server 端行為。
+
+	實作 `RpcService.java`，實現 RPC 時的 server 端行為。
 
 - src\main\java\com\dtc\test\shared\exception.TestException.java
-com.dtc.test 自定義的 Exception。
+
+	`com.dtc.test` 自定義的 Exception。
 
 - src\main\webapp\index.html
-網站首頁，引入 entry-point（TestEP.java）來呈現畫面以及畫面元件的功能。
+
+	網站首頁，引入 `entry-point`（`TestEP.java`）來呈現畫面以及畫面元件的功能。
 
 - src\main\webapp\WEB-INF\web.xml
-j2ee 標準的 config，裡面定義了 RPC 的 URI。
+
+	j2ee 標準的 config，裡面定義了 RPC 的 URI。
 
 
+> Task-2 的步驟有哪些是不必要的？或是有更好的作法？
 
-* Task-2 的步驟有哪些是不必要的？或是有更好的作法？
 
 只要將 `test\test.nocache.js` 複製到 `GwtSample\src\main\webapp\test` 下就好，其他檔案不用複製。
 
