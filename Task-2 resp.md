@@ -126,15 +126,18 @@ Task Feedback
 
 * [GwtSample] 當中每個檔案（`pom.xml` 除外）的意義、以及與其他檔案的關聯性。
 
-- src\main\java\com\dtc\test\Test.gwt.xml
-與 GWT 相關的 Configuration，<module> 的 rename-to 屬性與 GWT 的 output 路徑相對應。
+	- src\main\java\com\dtc\test\Test.gwt.xml
 
-- src\main\java\com\dtc\test\client\TestEP.java
-是一個 GWT Module，與 test.gwt.xml 中的 entry-point 對應，裡面包含頁面 layout 設定，以及 ui 元件的行為。
-start() method 實作了非同步的 RPC，在 RPC 回應之前以 print log per second 的方式來表達程序還在等待。
+		與 GWT 相關的 config file，`<module>` 的 `rename-to` 屬性與 GWT 的 `output` 路徑相對應。
 
-- src\main\java\com\dtc\test\client\RpcService.java
-遠端程序呼叫的 API，提供給 TestEP.java 遠端呼叫。
+	- src\main\java\com\dtc\test\client\TestEP.java
+	
+		是一個 GWT Module，與 `test.gwt.xml` 中的 `entry-point` 對應，裡面包含頁面 layout 設定，以及 ui 元件的行為。
+		`start()` method 實作了非同步的 RPC，在 RPC 回應之前以 print log per second 的方式來表達程序還在等待。
+
+	- src\main\java\com\dtc\test\client\RpcService.java
+	
+		遠端程序呼叫的 API，提供給 `TestEP.java` 遠端呼叫。
 
 - src\main\java\com\dtc\test\server\RpcServiceImpl.java
 實作 RpcService.java，實現 RPC 時的 server 端行為。
