@@ -72,21 +72,27 @@ Task Feedback
 	[Google Plugin for Eclipse 4.6 (Neon) Installation Instructions] [Installation]
 
 
-1. 「Maven」的步驟 2 的 `check point：c:\maven\bin\mvn.bat` 不存在（但有 `mvn.cmd`），我安裝的版本為 Apache Maven 3.3.9。
+1. 「Maven」的步驟 2 的 `check point：c:\maven\bin\mvn.bat` 不存在（但有 `mvn.cmd`），
+	我安裝的版本為 Apache Maven 3.3.9。
 1. 「啟動 web server」的教學中，推測應該是 Maven 比較簡單，而非兩種方式都「比較簡單」。
-1. 除了 `Ctrl-C` 之外還有別的方法停止 codeserver 嗎？因為發生不小心將 command-line 關閉卻無法停止 codeserver 運作的問題。
-1. 經由這個 Task 我對 GWT 的運作方式有了初步認識，目前覺得最特別的是 codeserver 的存在。GWT 的 client 程式變動需透過書籤的方式呼叫 codeserver 來進行 compile，修改的結果才會正確地顯示在前端頁面，這代表了在 GWT compile 過的前端資源都放在 codeserver，不過對於實際的運作方式還是一知半解。
+1. 除了 `Ctrl-C` 之外還有別的方法停止 codeserver 嗎？
+	因為發生不小心將 command-line 關閉卻無法停止 codeserver 運作的問題。
+1. 經由這個 Task 我對 GWT 的運作方式有了初步認識，目前覺得最特別的是 codeserver 的存在。
+	GWT 的 client 程式變動需透過書籤的方式呼叫 codeserver 來進行 compile，
+	修改的結果才會正確地顯示在前端頁面，這代表了在 GWT compile 過的前端資源都放在 codeserver，
+	不過對於實際的運作方式還是一知半解。
 1. 在同一個瀏覽器的同一個分頁中，連續點擊「送出」鍵時會發現呼叫 `start()` 時是共用同一組 `TestEP` 的類別屬性。
 	（「連續點擊」的定義是：在第一次 `start()` 結束之前持續點擊「送出」）
 	以下是推測，對於同一個瀏覽器分頁來說，`TestEP` 並非 Thread-safe，或者是說 `TestEP` 的成員屬性為該頁面中的 javascript globle variables。
-	Solution: 
+	解決方式： 
 	1. 在 `new RepeatingCommand()` 中定義 `counter`。
 	1. 定義實作 `AsyncCallback` 的類別並定義 `rpcFinish` 以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
-1. 如果修改 `Test.gwt.xml` 中的 `rename-to` 屬性，就必須跟著修改 `index.html` 中對應的 javascript uri，以及 `web.xml` 中對應的 `url-pattern`。
-	也必須重新執行 mvn install（For module changes）並重啟 codeserver，以及重啟 tomcat（For server side changes）。
-1. 決定 client side 中 `start()` 對應的 RPC 是依賴 `RpcService` 中的 annotation 宣告，與此相關的 `web.xml` 以及 `Test.gwt.xml` 彼此互相都有影響但耦合度很低，如果變動時會相當惱人。
-1. codeserver 中，主要是以最後一次執行 mvn install 的產出作為基礎在提供 module，`Dev Mode On` 時則動態的去 compile 當下的版本，可以關閉 Dev Mode 來做比對。
-
+1. 如果修改 `Test.gwt.xml` 中的 `rename-to` 屬性，就必須跟著修改 `index.html` 中對應的 javascript uri，
+	以及 `web.xml` 中對應的 `url-pattern`。然後必須重新執行 mvn install（For module changes）並重啟 codeserver，以及重啟 tomcat（For server side changes）。
+1. 決定 client side 中 `start()` 對應的 RPC 是依賴 `RpcService` 中的 annotation 宣告，
+	與此相關的 `web.xml` 以及 `Test.gwt.xml` 彼此互相都有影響但耦合度很低，如果變動時會相當惱人。
+1. codeserver 中，主要是以最後一次執行 mvn install 的產出作為基礎在提供 module，
+	`Dev Mode On` 時則動態的去 compile 當下的版本，可以關閉 Dev Mode 來做比對
  
 
 [GPfE]: https://developers.google.com/eclipse/docs/getting_started?hl=zh-TW
