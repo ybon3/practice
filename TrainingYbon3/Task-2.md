@@ -1,39 +1,40 @@
 Task Feedback
 =============
 
-> [GwtSample] ·í¤¤¨C­ÓÀÉ®×¡]`pom.xml` °£¥~¡^ªº·N¸q¡B¥H¤Î»P¨ä¥LÀÉ®×ªºÃöÁp©Ê¡C
+> [GwtSample] ç•¶ä¸­æ¯å€‹æª”æ¡ˆï¼ˆ`pom.xml` é™¤å¤–ï¼‰çš„æ„ç¾©ã€ä»¥åŠèˆ‡å…¶ä»–æª”æ¡ˆçš„é—œè¯æ€§ã€‚
 
 
 - src\main\java\com\dtc\test\Test.gwt.xml
 
-	»P GWT ¬ÛÃöªº config file¡A`<module>` ªº `rename-to` Äİ©Ê»P GWT ªº `output` ¸ô®|¬Û¹ïÀ³¡C
+	èˆ‡ GWT ç›¸é—œçš„ config fileï¼Œ`<module>` çš„ `rename-to` å±¬æ€§èˆ‡ GWT çš„ output è·¯å¾‘ç›¸å°æ‡‰ã€‚
 
 - src\main\java\com\dtc\test\client\TestEP.java
 
-	¬O¤@­Ó GWT Module¡A»P `test.gwt.xml` ¤¤ªº `entry-point` ¹ïÀ³¡A¸Ì­±¥]§t­¶­± layout ³]©w¡A¥H¤Î ui ¤¸¥óªº¦æ¬°¡C
-	`start()` method ¹ê§@¤F«D¦P¨Bªº RPC¡A¦b RPC ¦^À³¤§«e¥H print log per second ªº¤è¦¡¨Óªí¹Fµ{§ÇÁÙ¦bµ¥«İ¡C
+	æ˜¯ä¸€å€‹ GWT Moduleï¼Œèˆ‡ `test.gwt.xml` ä¸­çš„ `entry-point` å°æ‡‰ï¼Œè£¡é¢åŒ…å«é é¢ layout è¨­å®šï¼Œä»¥åŠ ui å…ƒä»¶çš„è¡Œç‚ºã€‚
+	`start()` method ç¤ºç¯„äº†éåŒæ­¥çš„ RPCï¼Œåœ¨ RPC å›æ‡‰ä¹‹å‰ä»¥ print log per second çš„æ–¹å¼ä¾†è¡¨é”ç¨‹åºé‚„åœ¨ç­‰å¾…ã€‚
 
 - src\main\java\com\dtc\test\client\RpcService.java
 
-	»·ºİµ{§Ç©I¥sªº API¡A´£¨Ñµ¹ `TestEP.java` »·ºİ©I¥s¡C
+	é ç«¯ç¨‹åºå‘¼å«çš„ APIï¼Œæä¾›çµ¦ `TestEP.java` é ç«¯å‘¼å«ã€‚
 
 - src\main\java\com\dtc\test\server\RpcServiceImpl.java
 
-	¹ê§@ `RpcService.java`¡A¹ê²{ RPC ®Éªº server ºİ¦æ¬°¡C
+	å¯¦ä½œ `RpcService.java`ï¼Œå¯¦ç¾ RPC æ™‚çš„ server ç«¯è¡Œç‚ºã€‚
 
-- src\main\java\com\dtc\test\shared\exception.TestException.java
+- src\main\java\com\dtc\test\shared\exception\TestException.java
 
-	`com.dtc.test` ¦Û©w¸qªº Exception¡C
+	`com.dtc.test` è‡ªå®šç¾©çš„ Exceptionã€‚
 
 - src\main\webapp\index.html
 
-	ºô¯¸­º­¶¡A¤Ş¤J `entry-point`¡]`TestEP.java`¡^¨Ó§e²{µe­±¥H¤Îµe­±¤¸¥óªº¥\¯à¡C
+	ç¶²ç«™é¦–é ï¼Œé€é `src="test/test.nocache.js"` å¼•å…¥ `entry-point`ï¼ˆ`TestEP.java`ï¼‰ä¾†å‘ˆç¾ç•«é¢ä»¥åŠç•«é¢å…ƒä»¶çš„åŠŸèƒ½ã€‚
+	å¼•å…¥çš„ js çš„ uri èˆ‡ `Test.gwt.xml` ä¸­çš„ `rename-to` æœ‰å°æ‡‰é—œä¿‚ã€‚
 
 - src\main\webapp\WEB-INF\web.xml
 
-	j2ee ¼Ğ·Çªº config file¡A¸Ì­±©w¸q¤F RPC ªº URI¡C
+	j2ee æ¨™æº–çš„ config fileï¼Œè£¡é¢å®šç¾©äº† RPC çš„ URIã€‚
 
-- ¦UÀÉ®×¶¡ªºÃöÁp©Ê
+- å„æª”æ¡ˆé–“çš„é—œè¯æ€§
 
                 Test.gwt.xml -- define --> TestEP.java
                                                 |
@@ -48,33 +49,43 @@ Task Feedback
         web.xml -- define --> RpcServiceImpl -- throw --> TestException
 
 
-> Task-2 ªº¨BÆJ¦³­ş¨Ç¬O¤£¥²­nªº¡H©Î¬O¦³§ó¦nªº§@ªk¡H
+> Task-2 çš„æ­¥é©Ÿæœ‰å“ªäº›æ˜¯ä¸å¿…è¦çš„ï¼Ÿæˆ–æ˜¯æœ‰æ›´å¥½çš„ä½œæ³•ï¼Ÿ
 
 
-¥u­n±N `test\test.nocache.js` ½Æ»s¨ì `GwtSample\src\main\webapp\test` ¤U´N¦n¡A¨ä¥LÀÉ®×¤£¥Î½Æ»s¡C
+1. åªè¦å°‡ `test\test.nocache.js` è¤‡è£½åˆ° `GwtSample\src\main\webapp\test` ä¸‹å°±å¥½ï¼Œå…¶ä»–æª”æ¡ˆä¸ç”¨è¤‡è£½ã€‚
+1. å¦‚æœåªæ˜¯ç‚ºäº†è¦è·‘ GwtSampleï¼ŒGPE çš„å®‰è£æ˜¯ä¸éœ€è¦çš„ã€‚
 
 
-§x´b¡B°İÃD¤Î¤ß±o
+å›°æƒ‘ã€å•é¡ŒåŠå¿ƒå¾—
 ================
 
-1. GPE ¥Ø«e¦ü¥G¥u¤ä´©¨ì Java 1.7¡A¨Ï¥Î JDK 8 ÁÙ¥²¶·¹ï IDE ¶i¦æ¡uCompiler compliance level¡vªº½Õ¾ã¡AWhy JDK 8¡H
+1. GPE ç›®å‰ä¼¼ä¹åªæ”¯æ´åˆ° Java 1.7ï¼Œä½¿ç”¨ JDK 8 é‚„å¿…é ˆå° IDE é€²è¡Œã€ŒCompiler compliance levelã€çš„èª¿æ•´ï¼ŒWhy JDK 8ï¼Ÿ
 
 
 	[App Engine does not yet support Java 8] [GPfE]
 
 
-1. ¯à§_¤@¨Ö´£¨Ñ«ØÄ³ªº Eclipse ª©¥»¡H
-1. ¡uEclipse / GPE¡vªº¨BÆJ 4 ¤¤¡A¬d¸ßµ²ªG¤¤§ä¤£¨ì Google Plugin for Eclipse¡]ÁÙ¤@ª½¥X²{ Error¡^¡C«ØÄ³¨Ï¥Î Menu Bar¡÷Help¡÷Install New Software ªº¦w¸Ë¤è¦¡¡C
+1. èƒ½å¦ä¸€ä½µæä¾›å»ºè­°çš„ Eclipse ç‰ˆæœ¬ï¼Ÿ
+1. ã€ŒEclipse / GPEã€çš„æ­¥é©Ÿ 4 ä¸­ï¼ŒæŸ¥è©¢çµæœä¸­æ‰¾ä¸åˆ° Google Plugin for Eclipseï¼ˆé‚„ä¸€ç›´å‡ºç¾ Errorï¼‰ã€‚å»ºè­°ä½¿ç”¨ Menu Barâ†’Helpâ†’Install New Software çš„å®‰è£æ–¹å¼ã€‚
  
 
 	[Google Plugin for Eclipse 4.6 (Neon) Installation Instructions] [Installation]
 
 
-1. ¡uMaven¡vªº¨BÆJ 2 ªº `check point¡Gc:\maven\bin\mvn.bat` ¤£¦s¦b¡]¦ı¦³ `mvn.cmd`¡^
-1. ¡u±Ò°Ê web server¡vªº±Ğ¾Ç¤¤¡A±À´úÀ³¸Ó¬O Maven ¤ñ¸ûÂ²³æ¡A¦Ó«D¨âºØ¤è¦¡³£¡u¤ñ¸ûÂ²³æ¡v¡C
-1. °£¤F `Ctrl-C` ¤§¥~ÁÙ¦³§Oªº¤èªk°±¤î codeserver ¶Ü¡H¦]¬°µo¥Í¤£¤p¤ß±N command-line Ãö³¬«oµLªk°±¤î codeserver ¹B§@ªº°İÃD¡C
-1. ¸g¥Ñ³o­Ó Task §Ú¹ï GWT ªº¹B§@¤è¦¡¦³¤Fªì¨B»{ÃÑ¡A¥Ø«eÄ±±o³Ì¯S§Oªº¬O codeserver ªº¦s¦b¡CGWT ªº client µ{¦¡ÅÜ°Ê»İ³z¹L®ÑÅÒªº¤è¦¡©I¥s codeserver ¨Ó¶i¦æ compile¡A­×§ïªºµ²ªG¤~·|¥¿½T¦aÅã¥Ü¦b«eºİ­¶­±¡A³o¥Nªí¤F¦b GWT compile ¹Lªº«eºİ¸ê·½³£©ñ¦b codeserver¡A¤£¹L¹ï©ó¹ê»Úªº¹B§@¤è¦¡ÁÙ¬O¤@ª¾¥b¸Ñ¡C
- 
+1. ã€ŒMavenã€çš„æ­¥é©Ÿ 2 çš„ `check pointï¼šc:\maven\bin\mvn.bat` ä¸å­˜åœ¨ï¼ˆä½†æœ‰ `mvn.cmd`ï¼‰ï¼Œæˆ‘å®‰è£çš„ç‰ˆæœ¬ç‚º Apache Maven 3.3.9ã€‚
+1. ã€Œå•Ÿå‹• web serverã€çš„æ•™å­¸ä¸­ï¼Œæ¨æ¸¬æ‡‰è©²æ˜¯ Maven æ¯”è¼ƒç°¡å–®ï¼Œè€Œéå…©ç¨®æ–¹å¼éƒ½ã€Œæ¯”è¼ƒç°¡å–®ã€ã€‚
+1. é™¤äº† `Ctrl-C` ä¹‹å¤–é‚„æœ‰åˆ¥çš„æ–¹æ³•åœæ­¢ codeserver å—ï¼Ÿå› ç‚ºç™¼ç”Ÿä¸å°å¿ƒå°‡ command-line é—œé–‰å»ç„¡æ³•åœæ­¢ codeserver é‹ä½œçš„å•é¡Œã€‚
+1. ç¶“ç”±é€™å€‹ Task æˆ‘å° GWT çš„é‹ä½œæ–¹å¼æœ‰äº†åˆæ­¥èªè­˜ï¼Œç›®å‰è¦ºå¾—æœ€ç‰¹åˆ¥çš„æ˜¯ codeserver çš„å­˜åœ¨ã€‚GWT çš„ client ç¨‹å¼è®Šå‹•éœ€é€éæ›¸ç±¤çš„æ–¹å¼å‘¼å« codeserver ä¾†é€²è¡Œ compileï¼Œä¿®æ”¹çš„çµæœæ‰æœƒæ­£ç¢ºåœ°é¡¯ç¤ºåœ¨å‰ç«¯é é¢ï¼Œé€™ä»£è¡¨äº†åœ¨ GWT compile éçš„å‰ç«¯è³‡æºéƒ½æ”¾åœ¨ codeserverï¼Œä¸éå°æ–¼å¯¦éš›çš„é‹ä½œæ–¹å¼é‚„æ˜¯ä¸€çŸ¥åŠè§£ã€‚
+1. åœ¨åŒä¸€å€‹ç€è¦½å™¨çš„åŒä¸€å€‹åˆ†é ä¸­ï¼Œé€£çºŒé»æ“Šã€Œé€å‡ºã€éµæ™‚æœƒç™¼ç¾å‘¼å« `start()` æ™‚æ˜¯å…±ç”¨åŒä¸€çµ„ `TestEP` çš„é¡åˆ¥å±¬æ€§ã€‚
+	ï¼ˆã€Œé€£çºŒé»æ“Šã€çš„å®šç¾©æ˜¯ï¼šåœ¨ç¬¬ä¸€æ¬¡ `start()` çµæŸä¹‹å‰æŒçºŒé»æ“Šã€Œé€å‡ºã€ï¼‰
+	ä»¥ä¸‹æ˜¯æ¨æ¸¬ï¼Œå°æ–¼åŒä¸€å€‹ç€è¦½å™¨åˆ†é ä¾†èªªï¼Œ`TestEP` ä¸¦é Thread-safeï¼Œæˆ–è€…æ˜¯èªª `TestEP` çš„æˆå“¡å±¬æ€§ç‚ºè©²é é¢ä¸­çš„ javascript globle variablesã€‚
+	Solution: 
+		i. åœ¨ `new RepeatingCommand()` ä¸­å®šç¾© `counter`ã€‚
+		ii. å®šç¾©å¯¦ä½œ `AsyncCallback` çš„é¡åˆ¥ä¸¦å®šç¾© `rpcFinish` ä»¥åŠå…¶ `getter()`ï¼Œåœ¨ `start()` ä¸­ä½¿ç”¨è®Šæ•¸å„²å­˜è©²é¡åˆ¥çš„ instatnceï¼Œä¾› `RepeatingCommand()` ä¸­èª¿ç”¨ã€‚
+1. å¦‚æœä¿®æ”¹ `Test.gwt.xml` ä¸­çš„ `rename-to` å±¬æ€§ï¼Œå°±å¿…é ˆè·Ÿè‘—ä¿®æ”¹ `index.html` ä¸­å°æ‡‰çš„ javascript uriï¼Œä»¥åŠ `web.xml` ä¸­å°æ‡‰çš„ `url-pattern`ã€‚
+	ä¹Ÿå¿…é ˆé‡æ–°åŸ·è¡Œ mvn installï¼ˆFor module changesï¼‰ä¸¦é‡å•Ÿ codeserverï¼Œä»¥åŠé‡å•Ÿ tomcatï¼ˆFor server side changesï¼‰ã€‚
+1. æ±ºå®š client side ä¸­ `start()` å°æ‡‰çš„ RPC æ˜¯ä¾è³´ `RpcService` ä¸­çš„ annotation å®£å‘Šï¼Œèˆ‡æ­¤ç›¸é—œçš„ `web.xml` ä»¥åŠ `Test.gwt.xml` å½¼æ­¤äº’ç›¸éƒ½æœ‰å½±éŸ¿ä½†è€¦åˆåº¦å¾ˆä½ï¼Œå¦‚æœè®Šå‹•æ™‚æœƒç›¸ç•¶æƒ±äººã€‚
+
 
 [GPfE]: https://developers.google.com/eclipse/docs/getting_started?hl=zh-TW
-[Installation]: https://github.com/DatacomRD/GwtSample
+[Installation]: https://developers.google.com/eclipse/docs/install-eclipse-4.6?hl=zh-TW
