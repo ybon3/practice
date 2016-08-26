@@ -53,7 +53,7 @@ Task Feedback
 
 
 1. 只要將 `test\test.nocache.js` 複製到 `GwtSample\src\main\webapp\test` 下就好，其他檔案不用複製。
-1. 如果只是為了要跑 GwtSample，GPE 的安裝是不需要的。
+1. 如果只是為了要跑 `GwtSample`，GPE 的安裝是不需要的。
 
 
 困惑、問題及心得
@@ -80,12 +80,14 @@ Task Feedback
 	（「連續點擊」的定義是：在第一次 `start()` 結束之前持續點擊「送出」）
 	以下是推測，對於同一個瀏覽器分頁來說，`TestEP` 並非 Thread-safe，或者是說 `TestEP` 的成員屬性為該頁面中的 javascript globle variables。
 	Solution: 
-		i. 在 `new RepeatingCommand()` 中定義 `counter`。
-		ii. 定義實作 `AsyncCallback` 的類別並定義 `rpcFinish` 以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
+	1. 在 `new RepeatingCommand()` 中定義 `counter`。
+	1. 定義實作 `AsyncCallback` 的類別並定義 `rpcFinish` 以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
 1. 如果修改 `Test.gwt.xml` 中的 `rename-to` 屬性，就必須跟著修改 `index.html` 中對應的 javascript uri，以及 `web.xml` 中對應的 `url-pattern`。
 	也必須重新執行 mvn install（For module changes）並重啟 codeserver，以及重啟 tomcat（For server side changes）。
 1. 決定 client side 中 `start()` 對應的 RPC 是依賴 `RpcService` 中的 annotation 宣告，與此相關的 `web.xml` 以及 `Test.gwt.xml` 彼此互相都有影響但耦合度很低，如果變動時會相當惱人。
+1. codeserver 中，主要是以最後一次執行 mvn install 的產出作為基礎在提供 module，`Dev Mode On` 時則動態的去 compile 當下的版本，可以關閉 Dev Mode 來做比對。
 
+ 
 
 [GPfE]: https://developers.google.com/eclipse/docs/getting_started?hl=zh-TW
 [Installation]: https://developers.google.com/eclipse/docs/install-eclipse-4.6?hl=zh-TW
