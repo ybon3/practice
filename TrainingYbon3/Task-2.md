@@ -82,7 +82,7 @@ Task Feedback
 	修改的結果才會正確地顯示在前端頁面，這代表了在 GWT compile 過的前端資源都放在 codeserver，
 	不過對於實際的運作方式還是一知半解。
 1. 在同一個瀏覽器的同一個分頁中，點擊「送出」鍵時所呼叫的 `start()` 是使用共同的 `rpcFinish` 與 `counter` 類別屬性。
-	如果是連續點擊兩次「送出」時，由於共用的原因，在觀察 log 時可以察覺不正確的現象。
+	由於共用的原因，當連續點擊兩次「送出」時可以透過觀察 log 察覺不正確的現象。
 	對於兩次呼叫 `start()` 的程序來說應該要獨立使用各別的 `rpcFinish` 與 `counter` 類別屬性。
 	解決這個現象的辦法（讓 `start()` 獨立使用這兩個屬性）： 
 	1. 在 `new RepeatingCommand()` 中定義 `counter`。
@@ -93,6 +93,24 @@ Task Feedback
 		private boolean rpcFinish = false;
 		public boolean getRpcFinish(){return rpcFinish;}
 		...
+	}
+	
+	...
+	
+	private void start() {
+		final MyAsyncCallback async = new MyAsyncCallback();
+		rpc.before(dateField.getValue(), async); 
+		
+		Scheduler.get().scheduleFixedPeriod(new RepeatingCommand() {
+			int counter = 0;
+			
+			@Override
+			public boolean execute() {
+				counter++;
+				GWT.log("第 " + counter + " 次 @ " + format.format(new Date()));
+				return !async.getRpcFinish();
+			}
+		}, 1000);
 	}
 	```
 	
