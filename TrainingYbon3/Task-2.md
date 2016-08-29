@@ -15,7 +15,7 @@ Task Feedback
 
 - src\main\java\com\dtc\test\client\RpcService.java
 
-	遠端程序呼叫的 API，提供給 `TestEP.java` 遠端呼叫。
+	遠端程序呼叫的 API，提供給 `TestEP.java` 遠端呼叫，annotation 定義了該 RPC 的 URI，與 start() 產生出來的 client side code 對應。
 
 - src\main\java\com\dtc\test\server\RpcServiceImpl.java
 
@@ -32,7 +32,7 @@ Task Feedback
 
 - src\main\webapp\WEB-INF\web.xml
 
-	j2ee 標準的 config file，裡面定義了 RPC 的 URI。
+	j2ee 標準的 config file，裡面定義了 RPC 的 URI，由 Test.gwt.xml 的 `rename-to` 以及 RpcService 的 annotation 組合而成。
 
 - 各檔案間的關聯性
 
@@ -81,16 +81,23 @@ Task Feedback
 	GWT 的 client 程式變動需透過書籤的方式呼叫 codeserver 來進行 compile，
 	修改的結果才會正確地顯示在前端頁面，這代表了在 GWT compile 過的前端資源都放在 codeserver，
 	不過對於實際的運作方式還是一知半解。
-1. 在同一個瀏覽器的同一個分頁中，連續點擊「送出」鍵時會發現呼叫 `start()` 時是共用同一組 `TestEP` 的類別屬性。
-	（「連續點擊」的定義是：在第一次 `start()` 結束之前持續點擊「送出」）
-	以下是推測，對於同一個瀏覽器分頁來說，`TestEP` 並非 Thread-safe，或者是說 `TestEP` 的成員屬性為該頁面中的 javascript globle variables。
-	解決方式： 
+1. 在同一個瀏覽器的同一個分頁中，點擊「送出」鍵時所呼叫的 `start()` 是使用共同的 `rpcFinish` 與 `counter` 類別屬性。
+	如果是連續點擊兩次「送出」時，由於共用的原因，在觀察 log 時可以察覺不正確的現象。
+	對於兩次呼叫 `start()` 的程序來說應該要獨立使用各別的 `rpcFinish` 與 `counter` 類別屬性。
+	解決這個現象的辦法（讓 `start()` 獨立使用這兩個屬性）： 
 	1. 在 `new RepeatingCommand()` 中定義 `counter`。
-	1. 定義實作 `AsyncCallback` 的類別並定義 `rpcFinish` 以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
+	1. 定義一個實作 `AsyncCallback` 的類別，並定義 `rpcFinish` 屬性以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
+	
+	class MyAsyncCallback implements AsyncCallback<Boolean> {
+		private boolean rpcFinish = false;
+		public boolean getRpcFinish(){return rpcFinish;}
+		...
+	}
+	
+	
+	以下是推測，對於同一個瀏覽器分頁來說，`TestEP` 並非 Thread-safe；或者說 `TestEP` 的成員屬性為該頁面中的 javascript globle variables。
 1. 如果修改 `Test.gwt.xml` 中的 `rename-to` 屬性，就必須跟著修改 `index.html` 中對應的 javascript uri，
 	以及 `web.xml` 中對應的 `url-pattern`。然後必須重新執行 mvn install（For module changes）並重啟 codeserver，以及重啟 tomcat（For server side changes）。
-1. 決定 client side 中 `start()` 對應的 RPC 是依賴 `RpcService` 中的 annotation 宣告，
-	與此相關的 `web.xml` 以及 `Test.gwt.xml` 彼此互相都有影響但耦合度很低，如果變動時會相當惱人。
 1. codeserver 中，主要是以最後一次執行 mvn install 的產出作為基礎在提供 module，
 	`Dev Mode On` 時則動態的去 compile 當下的版本，可以關閉 Dev Mode 來做比對
  
