@@ -88,11 +88,13 @@ Task Feedback
 	1. 在 `new RepeatingCommand()` 中定義 `counter`。
 	1. 定義一個實作 `AsyncCallback` 的類別，並定義 `rpcFinish` 屬性以及其 `getter()`，在 `start()` 中使用變數儲存該類別的 instatnce，供 `RepeatingCommand()` 中調用。
 	
+	```java
 	class MyAsyncCallback implements AsyncCallback<Boolean> {
 		private boolean rpcFinish = false;
 		public boolean getRpcFinish(){return rpcFinish;}
 		...
 	}
+	```
 	
 	
 	以下是推測，對於同一個瀏覽器分頁來說，`TestEP` 並非 Thread-safe；或者說 `TestEP` 的成員屬性為該頁面中的 javascript globle variables。
