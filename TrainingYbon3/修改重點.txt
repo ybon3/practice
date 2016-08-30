@@ -1,0 +1,47 @@
+永遠不要用浮點數(floating number)來做compare比較。因為浮點數在JavaScript裡是有誤差值的。
+
+不要過度頻繁的操作element的innerText或innerHTML，因為這會降低執行速度，比較沒效率。
+如果有個迴圈會連續對某個element改寫這兩個properties值，最好先將HTML或文字寫在string buffer裡，
+然後只做一次改寫的動作。
+
+儘量減少event handler(function)的數量，因為綁定越多的handler會消耗更多memory，而降低執行效率。
+可以使用”Event Delegation“的技巧來減少event handler的數量。
+
+JavaScript與CSS、HTML彼此之間應該儘量減少耦合(coupling)程度。
+HTML負責提供內容(content)，CSS專職呈現(appearance)，JavaScript則處理行為(behavior)(詳見這篇)。
+意即: 在HTML裡不該出現JavaScript及CSS style的code，在JavaScript裡不該去處理CSS style及HTML tag。
+過度的耦合會造成code maintain上的困難。
+
+儘量減少access global variable的次數可以增進效能，因為減少了traverse time。
+如果一個function裡有數個地方會access同一個global variable(如: document)，
+可以先用一個local variable去指向global variable，後續的code再access local variable，這樣可加快速度。
+
+儘量減少對DOM的操作會使效能有非常顯著的提升，DOM的運算是Browser裡最耗運算資源的。
+當要對一個HTML element連續插入很多或複雜的child element時，可以用DocumentFragment先將整個DOM結構建立好，
+再一次加進element，速度會快很多! (詳見這篇)
+
+執行eval函式需要使用script引擎將字串轉換為可執行的程式，因此要避免使用eval。
+
+
+--------------- Event Delegation ---------------
+
+document.onclick = function(event){
+    //IE doesn't pass in the event object
+    event = event || window.event;
+
+    //IE uses srcElement as the target
+    var target = event.target || event.srcElement;    
+
+    switch(target.id){
+        case "help-btn":
+            openHelp();
+            break;
+        case "save-btn":
+            saveDocument();
+            break;
+        case "undo-btn":
+            undoChanges();
+            break;
+        //others?
+    }
+};
