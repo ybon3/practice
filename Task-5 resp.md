@@ -38,5 +38,6 @@ Task Feedback
 	```
 	
 	
-	取代後的效果看似一樣，但可能是歪打正著，由於我無法從 Annotation 的寫法找出跟 API 文件中的 addXXXHandler 對應的機制。
-	我的疑問是：這個機制是如何運作的？
+	取代後的效果看似一樣，但可能是歪打正著。
+	
+	由於我無法從 Annotation 的寫法找出跟 API 文件中的 addXXXHandler 對應的機制，所以我的疑問是：這個機制是如何運作的？
