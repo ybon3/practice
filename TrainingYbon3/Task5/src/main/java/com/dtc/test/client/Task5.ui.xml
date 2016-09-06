@@ -1,0 +1,69 @@
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container"
+	xmlns:b="urn:import:com.sencha.gxt.widget.core.client.button">
+	
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="layoutDataTop">
+		<ui:attributes width="1.0" height="50" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataTopButton">
+		<ui:attributes width="0.5" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="layoutDataBottom">
+		<ui:attributes width="1.0" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataBottomLeftButton">
+		<ui:attributes width="100" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataBottomRight">
+		<ui:attributes width="1.0" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="layoutDataBottomRightTopButton">
+		<ui:attributes width="1.0" height="0.2" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+		field="layoutDataBottomRightBottom">
+		<ui:attributes width="1.0" height="0.8" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataBottomRightBottomLeftButton">
+		<ui:attributes width="200" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataBottomRightBottomMiddleButton">
+		<ui:attributes width="1.0" height="1.0" />
+	</ui:with>
+	<ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+		field="layoutDataBottomRightBottomRightButton">
+		<ui:attributes width="80" height="80" />
+	</ui:with>
+	
+	<c:VerticalLayoutContainer>
+		<c:HorizontalLayoutContainer layoutData="{layoutDataTop}">
+			<c:child>
+				<b:TextButton layoutData="{layoutDataTopButton}" text="w:50%, h:50px" />
+			</c:child>
+			<c:child>
+				<b:TextButton layoutData="{layoutDataTopButton}" text="w:50%, h:50px" />
+			</c:child>
+		</c:HorizontalLayoutContainer>
+		<c:HorizontalLayoutContainer layoutData="{layoutDataBottom}">
+			<b:TextButton layoutData="{layoutDataBottomLeftButton}" text="w:100px" />
+			<c:VerticalLayoutContainer layoutData="{layoutDataBottomRight}">
+				<b:TextButton layoutData="{layoutDataBottomRightTopButton}" text="h:20%(不含上頭的 50px)" />
+				<c:HorizontalLayoutContainer layoutData="{layoutDataBottomRightBottom}">
+					<b:TextButton layoutData="{layoutDataBottomRightBottomLeftButton}" text="w:200px" />
+					<b:TextButton layoutData="{layoutDataBottomRightBottomMiddleButton}" text="?" ui:field="btnQuestion" />
+					<b:TextButton layoutData="{layoutDataBottomRightBottomRightButton}" text="w:80px h:80px" />
+				</c:HorizontalLayoutContainer>
+			</c:VerticalLayoutContainer>
+		</c:HorizontalLayoutContainer>
+	</c:VerticalLayoutContainer>
+</ui:UiBinder>
