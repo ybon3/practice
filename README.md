@@ -6,6 +6,7 @@ VCS 操作規範
 
 我們使用 `git` 作為 VCS、使用 `Github` 作為 VCS host。
 
+TEST
 
 Git
 ---
