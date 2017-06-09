@@ -1,11 +1,3 @@
-名詞定義
-========
-* `DxReport` = `DiagnosticReport`
-* `ImgStudy` = `ImagingStudy`
-* `AccessionNo` = Accession Number
-* `foo["WTF"] = QOO` 表示會存在一個 `foo`、其 `system` 是「WTF」、`value` 是「QOO」
-
-
 DxReport / ImgStudy
 ===================
 
