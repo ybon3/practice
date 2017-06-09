@@ -35,14 +35,6 @@ Patient
 	* system：reference 形式的 `Organization`。
 	* value：該病患在指定機構當中的 `PatientID`
 
-> ###### 備註 ######
-> 病患的姓名、性別資訊只會認第一次進系統的那一筆資料。例如：
->
-> * 檢查單號：9527 先進入 Archive，所帶的姓名為「唐伯虎」
-> * 檢查單號：3310 後進入 Archive，所帶的姓名為「紙老虎」
->
-> 兩筆為同一個 OrgId、PatientID 但系統只會儲存「唐伯虎」。
-
 
 Person
 ======
